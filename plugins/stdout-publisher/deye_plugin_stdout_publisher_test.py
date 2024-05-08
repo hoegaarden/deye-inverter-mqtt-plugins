@@ -18,7 +18,7 @@ class UnsupportedEvent(DeyeEvent):
 
 class DeyeStdoutPublisherTest(unittest.TestCase):
     def setUp(self):
-        self.config = DeyeConfig(logger_config=DeyeLoggerConfig(1234567890, "192.168.1.1", 8899), mqtt=None)
+        self.config = DeyeConfig(logger_configs=DeyeLoggerConfig(1234567890, "192.168.1.1", 8899), mqtt=None)
 
     def test_get_id(self):
         sut = DeyeStdoutPublisher(self.config)

@@ -3,6 +3,8 @@
 This dumps the inverter metrics on stdout as JSON.
 I use that in combination with [telegraf], but anything that can read JSON should be able to deal with the inverter readings.
 
+[telegraf]: https://github.com/influxdata/telegraf
+
 ## data structure
 
 ```json
@@ -40,4 +42,15 @@ I use that in combination with [telegraf], but anything that can read JSON shoul
     ...
   }]
 }
+```
+
+## Usage with `telegraf`
+
+An example and minimal configuration for `telegraf` can be found [here](./telegraf.minimal.conf), which you can test with:
+```terminal
+env \
+  DEYE_LOGGER_IP=10.0.10.23 \
+  DEYE_LOGGER_SERIAL=123123123 \
+  DEYE_IMAGE=ghcr.io/hoegaarden/deye-inverter-mqtt-plugins:7bb1392 \
+  telegraf --config ./telegraf.minimal.conf --debug
 ```
